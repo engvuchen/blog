@@ -5,6 +5,7 @@
   "scripts": {
     "docs:deploy": "bash deploy.sh",
     "docs:dev": "vitepress dev docs",
+    "predocs:build": "npm i",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
