@@ -4,8 +4,11 @@ layout: home
 
 hero:
   name: 'Engvuchen Blog'
-  # text: '记录琐碎'
-  tagline: 关于工作中在前端遇到问题的一些文章总结
+  text: 工作中在前端遇到问题的文章总结
+  tagline: Vue.js / Node.js
+  image:
+    src: /title-logo.png
+    alt: Engvuchen
   actions:
     - theme: brand
       text: Markdown Examples
