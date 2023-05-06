@@ -4,7 +4,16 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "Engvuchen Blog",
   description: "A VitePress Site",
-  lastUpdatedText: true,
+
+  markdown: {
+    theme: {
+      dark: "dracula-soft",
+      light: "vitesse-light",
+    },
+  },
+
+  lastUpdated: true,
+
   head: [["link", { rel: "icon", type: "image/png", href: "/logo.png" }]],
   themeConfig: {
     logo: "/logo.png",
@@ -20,7 +29,7 @@ export default defineConfig({
         text: "CSS",
         items: [
           {
-            text: "Typora 主题（仿《超级简历》）",
+            text: "Typora 主题 - 仿超级简历",
             link: "/pages/css/super-resume-theme-to-typora.md",
           },
         ],
@@ -28,8 +37,9 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
-      copyright: [`<div>Copyright ©2023-present MyName</div>`],
+      message:
+        'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
+      copyright: [`<div>Copyright ©2023-present Engvuchen</div>`],
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/engvuchen" }],
