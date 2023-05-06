@@ -1,4 +1,6 @@
-# Typora 主题（仿《超级简历》）
+# Typora 主题 - 仿超级简历
+
+[仓库地址](https://github.com/engvuchen/super-resume-theme)
 
 ## 背景
 
@@ -12,13 +14,22 @@
 
 ## 效果
 
-[详见仓库](https://github.com/engvuchen/super-resume-theme)
+1. 在 typora 设置页面打中，打开 typora 主题文件夹；
+2. 把仓库中的 super-resume 文件夹、super-resume.css 文件复制到 typora 主题文件夹中；
+3. 在 typora 设置中切换主题为 Super Resume；
+4. 使用简历模版 [resume-template.md](https://github.com/engvuchen/super-resume-typora-tpl/blob/main/resume-template%20copy.md)，成功应用 Super Resume 后，如下图：
 
-<img width="840" alt="image" src="https://user-images.githubusercontent.com/31369318/226601247-8833bef1-abe2-40a6-8b5c-b8d61900bd51.png">
+![简历效果](https://engvu.oss-cn-shenzhen.aliyuncs.com/bc0b0436b89a0497b1892da3a87bccec.webp)
 
 ## 具体改动
 
-```css
+基于 Typora 自带的 Github 主题修改：
+
+1. html 设置字体改为 13px，
+2. 修改 h2 样式；
+3. 简历模版 MD 文件添加 html 标签，以实现居中、两端对齐效果；
+
+```javascript
 html {
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
@@ -58,11 +69,12 @@ h2 {
 }
 ```
 
-## 拓展
+## 拓展：木及简历
 
-若需在[木及简历](https://www.mujicv.com/)中使用，则需使用[此模版](https://github.com/engvuchen/super-resume-typora-tpl/blob/main/resume-template-muji.md)；
+若需在[木及简历](https://www.mujicv.com/)中使用，则需：
 
-自定义样式如下：
+1. 使用此[简历模版](https://github.com/engvuchen/super-resume-typora-tpl/blob/main/resume-template-muji.md)；
+2. 自定义样式如下：
 
 ```css
 .rs-view h2 {
