@@ -16,7 +16,7 @@ export default defineConfig({
 
   head: [["link", { rel: "icon", type: "image/png", href: "/logo.png" }]],
   themeConfig: {
-    logo: "/logo.png",
+    logo: "/logo.webp",
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [

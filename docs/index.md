@@ -7,7 +7,7 @@ hero:
   text: 工作中在前端遇到问题的文章总结
   tagline: Vue.js / Node.js
   image:
-    src: /title-logo.png
+    src: /cover.webp
     alt: Engvuchen
   actions:
     - theme: brand
@@ -18,10 +18,10 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: '<span style="display:flex; align-items: center"><img style="width:26px; margin-right: 10px" src="https://engvu.oss-cn-shenzhen.aliyuncs.com/27eebe76c7bd66f06a798f46ba5965e3.webp"> Typora 主题 - 仿超级简历</span>'
+    details: 用原生 MD 语法书写简历，模仿超级简历制作主题，简历更新通过 Typora 完成。
+    link: /pages/css/super-resume-theme-to-typora
+  
+  # - title: 🔑 Type Safe
+  #   details: Types are inferred, which means stores provide you with autocompletion even in JavaScript!
 ---
