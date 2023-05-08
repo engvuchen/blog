@@ -21,7 +21,13 @@ export default defineConfig({
 
   head: [
     ["meta", { name: "baidu-site-verification", content: "codeva-t2788OKrIx" }],
-    ["meta", { name: "google-site-verification", content: "TkndZ8YNuVLeC5gidJEe4A5AQhV37jFDir6xgP0S3QI" }],
+    [
+      "meta",
+      {
+        name: "google-site-verification",
+        content: "TkndZ8YNuVLeC5gidJEe4A5AQhV37jFDir6xgP0S3QI",
+      },
+    ],
     ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
   ],
   themeConfig: {
@@ -36,10 +42,21 @@ export default defineConfig({
     sidebar: [
       {
         text: "CSS",
+        collapsed: false,
         items: [
           {
             text: "Typora 主题 - 仿超级简历",
             link: "/pages/css/super-resume-theme-to-typora.md",
+          },
+        ],
+      },
+      {
+        text: "Visual Studio Code",
+        collapsed: false,
+        items: [
+          {
+            text: "插件模版 - Snippet Demo",
+            link: "/pages/vscode/snippet-demo.md",
           },
         ],
       },
@@ -48,7 +65,7 @@ export default defineConfig({
     footer: {
       message:
         'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
-      copyright: [`<div>Copyright ©2023-present Engvuchen</div>`],
+      copyright: "Copyright ©2023-present Engvuchen",
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/engvuchen" }],
