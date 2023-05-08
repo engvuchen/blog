@@ -8,7 +8,7 @@ const links = [];
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Engvuchen Blog",
-  description: "A VitePress Site",
+  description: "Engvuchen Blog",
 
   markdown: {
     theme: {
