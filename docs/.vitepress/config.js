@@ -19,7 +19,11 @@ export default defineConfig({
 
   lastUpdated: true,
 
-  head: [["link", { rel: "icon", type: "image/png", href: "/logo.png" }]],
+  head: [
+    ["meta", { name: "baidu-site-verification", content: "codeva-t2788OKrIx" }],
+    ["meta", { name: "google-site-verification", content: "TkndZ8YNuVLeC5gidJEe4A5AQhV37jFDir6xgP0S3QI" }],
+    ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
+  ],
   themeConfig: {
     logo: "/logo.webp",
 
