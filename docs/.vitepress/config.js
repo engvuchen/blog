@@ -37,6 +37,7 @@ export default defineConfig({
     nav: [
       { text: "首页", link: "/" },
       { text: "CSS", link: "/pages/css/super-resume-theme-to-typora.md" },
+      { text: "VSCODE", link: "/pages/vscode/snippet-demo.md" },
     ],
 
     sidebar: [
