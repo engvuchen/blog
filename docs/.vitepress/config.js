@@ -1,4 +1,9 @@
+import { createWriteStream } from "node:fs";
+import { resolve } from "node:path";
+import { SitemapStream } from "sitemap";
 import { defineConfig } from "vitepress";
+
+const links = [];
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -43,5 +48,26 @@ export default defineConfig({
     },
 
     socialLinks: [{ icon: "github", link: "https://github.com/engvuchen" }],
+  },
+
+  // transformHtml is a build hook to transform the content of each page before saving to disk.
+  transformHtml: (_, id, { pageData }) => {
+    if (!/[\\/]404\.html$/.test(id))
+      links.push({
+        // you might need to change this if not using clean urls mode
+        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, "$2"),
+        lastmod: pageData.lastUpdated,
+      });
+  },
+  // buildEnd is a build CLI hook, it will run after build (SSG) finish but before VitePress CLI process exits.
+  buildEnd: async ({ outDir }) => {
+    const sitemap = new SitemapStream({
+      hostname: "https://engvu.tech/",
+    });
+    const writeStream = createWriteStream(resolve(outDir, "sitemap.xml"));
+    sitemap.pipe(writeStream);
+    links.forEach((link) => sitemap.write(link));
+    sitemap.end();
+    await new Promise((r) => writeStream.on("finish", r));
   },
 });
