@@ -10,14 +10,15 @@ export default defineConfig({
   title: "Engvuchen Blog",
   description: "Engvuchen Blog",
 
+  srcDir: "pages",
+  lastUpdated: true,
+
   markdown: {
     theme: {
       dark: "dracula-soft",
       light: "vitesse-light",
     },
   },
-
-  lastUpdated: true,
 
   head: [
     ["meta", { name: "baidu-site-verification", content: "codeva-t2788OKrIx" }],
@@ -36,8 +37,8 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "首页", link: "/" },
-      { text: "CSS", link: "/pages/css/super-resume-theme-to-typora.md" },
-      { text: "VSCODE", link: "/pages/vscode/snippet-demo.md" },
+      { text: "CSS", link: "/css/super-resume-theme-to-typora.md" },
+      { text: "VSCODE", link: "/vscode/snippet-demo.md" },
     ],
 
     sidebar: [
@@ -47,7 +48,7 @@ export default defineConfig({
         items: [
           {
             text: "Typora 主题 - 仿超级简历",
-            link: "/pages/css/super-resume-theme-to-typora.md",
+            link: "/css/super-resume-theme-to-typora.md",
           },
         ],
       },
@@ -57,7 +58,7 @@ export default defineConfig({
         items: [
           {
             text: "插件模版 - Snippet Demo",
-            link: "/pages/vscode/snippet-demo.md",
+            link: "/vscode/snippet-demo.md",
           },
         ],
       },
