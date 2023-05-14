@@ -33,46 +33,60 @@ export default defineConfig({
   ],
   themeConfig: {
     logo: '/logo.webp',
+    outline: {
+      label: '本页内容',
+    },
+    docFooter: {
+      prev: '上一页',
+      next: '下一页',
+    },
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
       { text: 'CSS', link: '/css/super-resume-theme-to-typora.md' },
       { text: 'VSCODE', link: '/vscode/snippet-demo.md' },
+      { text: '杂谈', link: '/blog/picgo-compress-install.md' },
     ],
 
-    sidebar: [
-      {
-        text: 'CSS',
-        collapsed: false,
-        items: [
-          {
-            text: 'Typora 主题 - 仿超级简历',
-            link: '/css/super-resume-theme-to-typora.md',
-          },
-        ],
-      },
-      {
-        text: 'Visual Studio Code',
-        collapsed: false,
-        items: [
-          {
-            text: '插件模版 - Snippet Demo',
-            link: '/vscode/snippet-demo.md',
-          },
-        ],
-      },
-      {
-        text: '博客',
-        collapsed: false,
-        items: [
-          {
-            text: 'PicGo 安装 picgo-plugin-compress',
-            link: '/blog/picgo-compress-install.md',
-          },
-        ],
-      },
-    ],
+    sidebar: {
+      '/css/': [
+        {
+          text: 'CSS',
+          collapsed: false,
+          items: [
+            {
+              text: 'Typora 主题 - 仿超级简历',
+              link: '/css/super-resume-theme-to-typora.md',
+            },
+          ],
+        },
+      ],
+      '/vscode/': [
+        {
+          text: 'Visual Studio Code',
+          collapsed: false,
+          items: [
+            {
+              text: '插件模版 - Snippet Demo',
+              link: '/vscode/snippet-demo.md',
+            },
+          ],
+        },
+      ],
+      '/blog/': [
+        {
+          text: '博客',
+          collapsed: false,
+          items: [
+            {
+              text: 'PicGo 安装 picgo-plugin-compress',
+              link: '/blog/picgo-compress-install.md',
+            },
+          ],
+        },
+      ],
+    },
 
     footer: {
       message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
