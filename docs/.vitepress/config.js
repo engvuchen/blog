@@ -12,6 +12,7 @@ export default defineConfig({
 
   srcDir: 'pages',
   lastUpdated: true,
+  cleanUrls: true,
 
   markdown: {
     theme: {
