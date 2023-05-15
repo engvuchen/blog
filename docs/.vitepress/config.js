@@ -12,7 +12,6 @@ export default defineConfig({
 
   srcDir: 'pages',
   lastUpdated: true,
-  cleanUrls: true,
 
   markdown: {
     theme: {
@@ -90,7 +89,8 @@ export default defineConfig({
     },
 
     footer: {
-      message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
+      message:
+        'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
       copyright: 'Copyright ©2023-present Engvuchen',
     },
 
@@ -98,13 +98,20 @@ export default defineConfig({
   },
 
   // transformHtml is a build hook to transform the content of each page before saving to disk.
+  // See: https://github.com/vuejs/vitepress/issues/520
   transformHtml: (_, id, { pageData }) => {
-    if (!/[\\/]404\.html$/.test(id))
+    if (!/[\\/]404\.html$/.test(id)) {
+      let { relativePath } = pageData;
+      // 4everland 不支持映射 url 到指定文件，访问不带后缀的链接，相当于访问 '链接/index.html'
+      // 根目录有 index.html，可以不带后缀
+      if (relativePath === 'index.md') relativePath = '';
       links.push({
         // you might need to change this if not using clean urls mode
-        url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+        // url: pageData.relativePath.replace(/((^|\/)index)?\.md$/, '$2'),
+        url: relativePath.replace(/[.]md$/, '.html'),
         lastmod: pageData.lastUpdated,
       });
+    }
   },
   // buildEnd is a build CLI hook, it will run after build (SSG) finish but before VitePress CLI process exits.
   buildEnd: async ({ outDir }) => {
@@ -113,8 +120,8 @@ export default defineConfig({
     });
     const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'));
     sitemap.pipe(writeStream);
-    links.forEach(link => sitemap.write(link));
+    links.forEach((link) => sitemap.write(link));
     sitemap.end();
-    await new Promise(r => writeStream.on('finish', r));
+    await new Promise((r) => writeStream.on('finish', r));
   },
 });
