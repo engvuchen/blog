@@ -16,7 +16,7 @@
 
 2. 打开 PicGo 的安装目录。例 `C:\Users<用户名>\AppData\Roaming\picgo`；
 
-3. 清空 `node_modules` 文件夹；
+3. 删除 `node_modules` 文件夹；
 
 4. 打开根目录下的 `package.json`，改动 `dependencies`：
 
