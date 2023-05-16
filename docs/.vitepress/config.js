@@ -85,6 +85,16 @@ export default defineConfig({
             },
           ],
         },
+        {
+          text: 'Git',
+          collapsed: false,
+          items: [
+            {
+              text: 'Mac Git 多用户配置',
+              link: '/git/multi-workspace.md',
+            },
+          ],
+        },
       ],
     },
 
