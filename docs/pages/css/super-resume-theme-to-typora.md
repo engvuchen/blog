@@ -26,7 +26,7 @@
 2. 修改 h2 样式；
 3. 简历模版 MD 文件添加 html 标签，以实现居中、两端对齐效果；
 
-```javascript
+```css
 html {
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
