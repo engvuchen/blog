@@ -16,5 +16,13 @@
   "dependencies": {
     "sitemap": "^7.1.1",
     "vitepress": "^1.0.0-alpha.74"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true
   }
 }
