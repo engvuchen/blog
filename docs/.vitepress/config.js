@@ -46,7 +46,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: 'CSS', link: '/css/super-resume-theme-to-typora.md' },
       { text: 'VSCODE', link: '/vscode/snippet-demo.md' },
-      { text: '杂谈', link: '/blog/picgo-compress-install.md' },
+      { text: '杂谈', link: '/others/blog/picgo-compress-install.md' },
     ],
 
     sidebar: {
@@ -62,26 +62,37 @@ export default defineConfig({
           ],
         },
       ],
-      '/vscode/': [
-        {
-          text: 'Visual Studio Code',
-          collapsed: false,
-          items: [
-            {
-              text: '插件模版 - Snippet Demo',
-              link: '/vscode/snippet-demo.md',
-            },
-          ],
-        },
-      ],
-      '/blog/': [
+      // '/vscode/': [
+      //   {
+      //     text: 'Visual Studio Code',
+      //     collapsed: false,
+      //     items: [
+      //       {
+      //         text: '插件模版 - Snippet Demo',
+      //         link: '/vscode/snippet-demo.md',
+      //       },
+      //     ],
+      //   },
+      // ],
+      // 实现点开杂谈，能看到“博客”、“Git” 分类
+      '/others/': [
         {
           text: '博客',
           collapsed: false,
           items: [
             {
               text: 'PicGo 安装 picgo-plugin-compress',
-              link: '/blog/picgo-compress-install.md',
+              link: '/others/blog/picgo-compress-install.md',
+            },
+          ],
+        },
+        {
+          text: '项目复盘',
+          collapsed: false,
+          items: [
+            {
+              text: '复盘 - vue 相关系列文档汇总',
+              link: '/others/project-review/vue-docs-cn-collection.md',
             },
           ],
         },
@@ -91,7 +102,7 @@ export default defineConfig({
           items: [
             {
               text: 'Mac Git 多用户配置',
-              link: '/git/multi-workspace.md',
+              link: '/others/git/multi-workspace.md',
             },
           ],
         },
