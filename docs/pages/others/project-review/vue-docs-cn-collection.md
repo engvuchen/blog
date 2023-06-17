@@ -4,42 +4,41 @@
 
 最近在看 Vue 以及周边生态库的文档，打算过一遍，发现：
 
-1. 不好把握阅读进度。侧栏的每一章节都是闭合的，没有点开前不知道剩下多少内容未读；
-2. 归纳知识点较为繁琐。每一篇文章都是独立的，阅读压力较小，但当需要归纳某一个知识点时，往往需要查阅多篇文章，整理不易；
-3. 文档结构较统一。文档基本都由 vitepress 搭建，原始文件均为 MD 文件，配置结构较为统一；
+1. **阅读进度不好把握**。侧栏的每一章节都是闭合的，没有点开前不知道剩下多少内容未读；
+2. **归纳知识点较为繁琐**。每一篇文章都是独立的，阅读压力较小，但当需要归纳某一个知识点时，往往需要查阅多篇文章，整理不易；
+3. **文档结构较统一**。文档基本都由 vitepress 搭建，原始文件均为 MD 文件，配置结构较为统一；
 
-遂萌生出“整合文档”的想法，如果用 node.js 合并仓库中的所有文档为单个 MD 文件，把控阅读进度、整理内容应该都能满足。
+遂萌生出“整合文档”的想法：用 node.js 合并仓库中的所有文档为单个 MD 文件，把控阅读进度、整理内容的需求应该都能满足。
 
 下文以 `vuex@4.1.0` 为例，分享下具体思路。
 
 ## 成果
 
-分享下项目成果，以下文档的汇总效果还是可以的：
-
-1. [vue-router 文档汇总](https://github.com/engvuchen/vue-docs-cn-collection/blob/main/vue-router-all-zh-docs.md)；
-2. [vuex 文档汇总](https://github.com/engvuchen/vue-docs-cn-collection/blob/main/vuex-all-zh-docs.md)；
-3. [pinia 文档汇总](https://github.com/engvuchen/vue-docs-cn-collection/blob/main/%40pinia-root-all-zh-docs.md)。
+1. [vue-router 文档汇总](https://github.com/engvuchen/vue-docs-cn-collection/blob/main/vue-router-all-zh-docs.md)
+2. [vuex 文档汇总](https://github.com/engvuchen/vue-docs-cn-collection/blob/main/vuex-all-zh-docs.md)
+3. [pinia 文档汇总](https://github.com/engvuchen/vue-docs-cn-collection/blob/main/%40pinia-root-all-zh-docs.md)
 
 [仓库地址](https://github.com/engvuchen/vue-docs-cn-collection)
 
 ## 项目需求
 
 1. 汇总文档范围是项目文档的《指南》部分；
-2. 汇总文档大纲结构，应和线官方文档大纲一致；
+2. 汇总文档大纲结构，应和线上官方文档大纲一致；
 3. 提供命令行界面，供用户选择具体项目；
-4. 最好仅解析文档项目，这样获取文档最新内容时无需再次修改；
+4. 仅获取文档，不变更文档项目，这样获取文档最新内容时无需再次修改；
 
-综上，思路如下：
+综上，思路如下（4）：
 
 **（1）寻找在线文档、文档配置之间的映射**
 
-配置位置：这个比较简单，配置文件都在 `.vuepress` 或 `.vitepress` 文件夹中，例 `vuex/docs/.vitepress/config.js`。
+配置文件位置：这个比较简单，配置文件都在 `.vuepress` 或 `.vitepress` 文件夹中，例 `vuex/docs/.vitepress/config.js`。
 
 配置项结构：可能是对象，也可能是字符串：
 
 1. `text`：一般是文档标题（侧栏显示的，和 MD 文档内容的标题不一样）；
 2. `link`：一般是文档路径；
 3. `children`、`items`：一般包含嵌套文档项；
+
 ```javascript
 // 对象: { text: '', link: '', children: [], items: [] }
 let conf1 = { text: '', children: [] } 
@@ -49,11 +48,14 @@ let conf4 = '/zh/installation.md'
 ```
 
 > ❗️注意：`item.link` 的判断不可靠。
-> 例当遇到 `{ link: '/zh/guide/state' }`，字符串会被包装成对象，它的原型上有 [link 函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/link)！！
+> 例当遇到 `item` 为 `{ link: '/zh/guide/state' }`，`item.link` 是字符串，它会被包装成对象，它的原型上有 [link 函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/link)！
 
 **（2）大纲匹配**
+
 对于 `vuex` 的这个配置，“介绍”需要是一级标题。碰到这种结构，被读取文章的标题都需要递进一级；
+
 处理：匹配出 MD 语法的标题，加多一个 '#'。
+
 ```javascript
 {
   text: '介绍',
@@ -66,9 +68,11 @@ let conf4 = '/zh/installation.md'
 ```
 
 **（3）方便获取文档项目的远程修改**
+
 使用 [Git - 子模块](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97) 实现此需求。
 
 **（4）命令行界面**
+
 使用 `@clack/prompts` 进行开发。
 
 以下详细说说遇到的 2 个难点：
@@ -81,13 +85,14 @@ let conf4 = '/zh/installation.md'
 ### 兼容不同文档配置的读写
 
 vue 系列（vuex、vue-router 等）的文档基本由 `vitepress`（JS、TS）、`vuepress` 配置；
+
 比较棘手的是存在 2 种不同文件类型（JS、TS）的配置：
 
-（1）**对于 JS 文件**，理想状态是对应文档项目安装好依赖（npm install）后，使用 `require(配置路径)` 即可读取配置；
+（1）**对于 JS 文件**，理想状态是对应文档项目安装好依赖（`npm install`）后，使用 `require(配置路径)` 即可读取配置；
 
 但实际调研发现，不同文档的包管理器存在出入，安装依赖的包管理器有 2 种（npm、pnpm）。
 
-（2）**为导入一个 TS 文件**，在不增加项目复杂度的情况下（TS编译器什么的），一开始的做法是给`package.json` 添加 `type: 'module'`，还要将对应被读取配置文件重命名为 `.mjs`；
+（2）**为导入一个 TS 文件**，在不增加项目复杂度的情况下（TS编译器等），一开始的做法是给`package.json` 添加 `type: 'module'`，还要将对应被读取配置文件重命名为 `.mjs`；
 
 但这种处理和项目需求的第 4 点冲突。
 
@@ -142,7 +147,7 @@ vue 系列（vuex、vue-router 等）的文档基本由 `vitepress`（JS、TS）
 
 另外相对路径不仅仅在配置文件中，文档中也可能存在；
 
-综上，有以下几种情况（踩了好几个坑，才探明）：
+综上，有以下几种情况（这里踩了好几个坑）：
 
 1. `link` 属性对应的是 `zh` 开头的路径，需要处理成文件实际路径；
 2. 在单篇文档中，引用路径包括其他文章、锚点、图片、http 链接：
