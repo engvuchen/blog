@@ -111,9 +111,10 @@ export default defineConfig({
     },
 
     footer: {
+      // </br>Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.
       message:
-        'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
-      copyright: 'Copyright ©2023-present Engvuchen',
+        '<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2024184877号-1</a>',
+      copyright: 'Copyright ©2024-present Engvuchen',
     },
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/engvuchen' }],

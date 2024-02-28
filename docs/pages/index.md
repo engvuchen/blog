@@ -5,7 +5,7 @@ layout: home
 hero:
   name: Engvuchen Blog
   text: 个人的琐碎博客记录
-  tagline: 可以让步却不可退缩，可以羞涩却不可软弱。总之，程序员必须是勇敢的。
+  tagline: Talk is cheap. Show me the code.
   image:
     src: /cover.webp
     alt: engvuchen
