@@ -11,6 +11,7 @@ export default defineConfig({
   description: 'Engvuchen Blog',
 
   srcDir: 'pages',
+  outDir: '../dist',
   lastUpdated: true,
 
   markdown: {
