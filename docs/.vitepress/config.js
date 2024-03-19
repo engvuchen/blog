@@ -112,8 +112,11 @@ export default defineConfig({
 
     footer: {
       // </br>Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.
-      message:
-        '<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2024184877号-1</a>',
+      message: [
+        '<span style="display: flex; justify-content: center; align-items: center;">本网站由<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank"><img style="width: 60px;" src="https://engvu.oss-cn-shenzhen.aliyuncs.com/005c5ccdf20ec87040f5a0d810a2261a.webp"/></a>提供CDN加速/云存储服务</span>',
+        '<a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2024184877号-1</a><br>',
+        '<span ><a style="display: flex; justify-content: center; align-items: center;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030002002597"><img style="width: 22px; display: inline-block;" src="https://engvu.oss-cn-shenzhen.aliyuncs.com/94c12ad29602f4cf7cdb4b46d968ff7d.webp"/>粤公网安备44030002002597号</a></span>',
+      ].join(''),
       copyright: 'Copyright ©2024-present Engvuchen',
     },
 
